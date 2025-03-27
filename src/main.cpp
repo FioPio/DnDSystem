@@ -1,15 +1,8 @@
 
-#include "GameObject.h"
+#include "graphics/BasicOperations.h"
 
 
 int main()
 {
-   
-    GameManager game_manager;
-
-    game_manager.runGame();
-
-
-
-    return 0;
+    return MainLoop();
 }
