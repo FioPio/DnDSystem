@@ -1,15 +1,10 @@
+#include "GameEngine/GameEngine.h"
 
-#include "GameObject.h"
-
-
-int main()
+int main(int argc, char *argv[])
 {
-   
-    GameManager game_manager;
+    GameEngine game_engine;
 
-    game_manager.runGame();
-
-
+    game_engine.Run();
 
     return 0;
 }
