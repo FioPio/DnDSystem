@@ -1,6 +1,8 @@
 #ifndef __GAME_ENGINE_H__
 #define __GAME_ENGINE_H__
 
+#include <string>
+
 struct SDL_Window;
 typedef void *SDL_GLContext;
 
@@ -30,6 +32,7 @@ private:
 
     SDL_Window *_window{nullptr};
     SDL_GLContext _gl_context{nullptr};
+    std::string _window_title{"Test Window"};
 };
 
 #endif // __GAME_ENGINE_H__
