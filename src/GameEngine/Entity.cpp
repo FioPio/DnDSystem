@@ -58,10 +58,12 @@ void Entity::SetPosition(int x, int y)
     _x = x;
     _y = y;
 }
+
 void Entity::SetX(int x)
 {
     _x = x;
 }
+
 void Entity::SetY(int y)
 {
     _y = y;
@@ -203,33 +205,33 @@ void Spritesheet::DrawSprite(int row, int col, Background &background)
                 int idx_pixel = idx_0_background + (i + _y) * background.GetWidth() + (j + _x);
                 if (idx_pixel >= 0 && idx_pixel < background.GetWidth() * background.GetHeight())
                 {
-                    int32_t color = _sprite[idx_0_sprite + i * _w + j];
+                    PixelColor sprite_color = {_sprite[idx_0_sprite + i * _w + j]};
 
-                    if (color && 0x000000FF == 0x000000FF) // Check if the pixel is not transparent
+                    if (sprite_color.alpha == 0xFF) // Check if the pixel is not transparent
                     {
-                        p_background[idx_pixel] = color;
+                        p_background[idx_pixel] = sprite_color.color;
                     }
-                    else if (color && 0x000000FF != 0x00000000) // Check if the pixel is transparent
+                    else if (sprite_color.alpha != 0x00) // Check if the pixel is transparent
                     {
-                        int bg_color = p_background[idx_pixel];
-                        int bg_r = (bg_color >> 24) & 0xFF;
-                        int bg_g = (bg_color >> 16) & 0xFF;
-                        int bg_b = (bg_color >> 8) & 0xFF;
+                        PixelColor bg_color = {p_background[idx_pixel]};
 
-                        int sp_r = (color >> 24) & 0xFF;
-                        int sp_g = (color >> 16) & 0xFF;
-                        int sp_b = (color >> 8) & 0xFF;
-                        int sp_a = (color >> 0) & 0xFF;
+                        PixelColor new_color;
 
-                        int new_r = (bg_r * (255 - sp_a) + sp_r * sp_a) / 255;
-                        int new_g = (bg_g * (255 - sp_a) + sp_g * sp_a) / 255;
-                        int new_b = (bg_b * (255 - sp_a) + sp_b * sp_a) / 255;
+                        new_color.red = (bg_color.red * (255 - sprite_color.alpha) +
+                                         sprite_color.red * sprite_color.alpha) /
+                                        255;
 
-                        p_background[idx_pixel] = (new_r << 24) | (new_g << 16) | (new_b << 8) | 0xFF;
+                        new_color.green = (bg_color.green * (255 - sprite_color.alpha) +
+                                           sprite_color.green * sprite_color.alpha) /
+                                          255;
 
-                        std::cout << "Pixel color: " << std::hex << color
-                                  << " Background color: " << std::hex << bg_color
-                                  << " New color: " << std::hex << p_background[idx_pixel] << std::endl;
+                        new_color.blue = (bg_color.blue * (255 - sprite_color.alpha) +
+                                          sprite_color.blue * sprite_color.alpha) /
+                                         255;
+
+                        new_color.alpha = 0xFF;
+
+                        p_background[idx_pixel] = sprite_color.color;
                     }
                 }
                 else

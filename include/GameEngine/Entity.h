@@ -3,6 +3,18 @@
 
 #include <string>
 
+union PixelColor
+{
+    int32_t color;
+    struct
+    {
+        char red : 8;
+        char green : 8;
+        char blue : 8;
+        char alpha : 8;
+    };
+};
+
 class Entity
 {
 public:
