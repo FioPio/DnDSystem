@@ -1,0 +1,7 @@
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/DnDModel.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/edit_cache.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/rebuild_cache.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/list_install_components.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/install.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/install/local.dir
+/home/fio/Documents/projectes/code/games/DnDSystem/build/CMakeFiles/install/strip.dir

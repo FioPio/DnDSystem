@@ -2,7 +2,7 @@
 #include <thread>
 
 #include "graphics/NcursesGraphics.h"
-
+#include "rules/Roll.h"
 
 namespace cr = std::chrono;
 
@@ -13,7 +13,7 @@ int main()
     "<(o_o)>"
     " -|_|-/"
     "  / \  "; 
-     */
+   */
     TextSprite goblin (
         {{'<', '(', 'o', '_', 'o', ')', '>'},
          {' ', '-', '|', '_', '|', '-', '/'},
@@ -54,6 +54,8 @@ int main()
 
         display.DrawText("Move with arrow keys!", 10, 12, FontColor::GREEN_OVER_BLACK);
         display.DrawText("Press 'q' to quit", 10, 14, FontColor::GREEN_OVER_BLACK);
+	std::string die_roll = std::format("%d", Die::Roll(2, 3));
+	display.DrawText(die_roll, 20, 20, FontColor::BLUE_OVER_BLACK);
 
         switch (ch) {
             case static_cast<int>(Key::UP): 

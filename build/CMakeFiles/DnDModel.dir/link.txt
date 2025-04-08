@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/DnDModel.dir/link.d CMakeFiles/DnDModel.dir/src/graphics/BasicOperations.cpp.o CMakeFiles/DnDModel.dir/src/graphics/NcursesGraphics.cpp.o CMakeFiles/DnDModel.dir/src/main.cpp.o CMakeFiles/DnDModel.dir/src/rules/Roll.cpp.o -o DnDModel  -lncursesw

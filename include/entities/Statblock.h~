@@ -1,0 +1,21 @@
+#ifndef __STATBLOCK_H__
+#define __STATBLOCK_H__
+
+
+class Action;
+
+class Statblock
+{
+public:
+  float GetCR();
+  
+
+
+
+private:
+  float cr;
+  
+};
+
+
+#endif // __STATBLOCK_H__

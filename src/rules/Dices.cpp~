@@ -1,0 +1,20 @@
+#ifndef __DICE_H__
+#define __DICE_H__
+
+enum class Roll
+{
+    STRIGHT = 1,
+    ADVANTAGE = 2,
+    DISADVANTAGE = 3,
+};
+
+
+class Dice
+{
+public:
+  static int Roll(int die, int nDice, Roll roll = Roll::STRIGHT);
+  
+};
+
+
+#endif //__DICE_H__
