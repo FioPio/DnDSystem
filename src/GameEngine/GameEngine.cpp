@@ -52,6 +52,12 @@ void GameEngine::Run()
 
     Background background("../rsc/sprites/Background.png");
 
+    Spritesheet link("../rsc/sprites/LinkSpritesheet.png", 8, 10);
+    Spritesheet trainer("../rsc/sprites/Pokemon.png", 4, 4);
+
+    link.SetPosition(100, 100);
+    trainer.SetPosition(200, 200);
+
     while (_running)
     {
         // entrada
@@ -125,6 +131,9 @@ void GameEngine::Run()
         */
         background.Clear();
         background.Draw(test_sprite);
+
+        link.DrawSprite(1, 0, background);
+        trainer.DrawSprite(2, 2, background);
 
         glDrawPixels(_w_width, _w_height, GL_RGBA, GL_UNSIGNED_BYTE, background.GetFrame());
 
