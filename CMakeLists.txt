@@ -17,6 +17,18 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 
+find_path(STB_INCLUDE_DIR
+    NAMES stb_image.h
+    PATHS /usr/include/stb
+)
+
+if (STB_INCLUDE_DIR)
+    message(STATUS "Found stb_image.h at ${STB_INCLUDE_DIR}")
+    include_directories(${STB_INCLUDE_DIR})
+else()
+    message(FATAL_ERROR "Could not find stb_image.h")
+endif()
+
 
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIR})

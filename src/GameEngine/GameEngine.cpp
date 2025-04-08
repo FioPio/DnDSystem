@@ -6,6 +6,8 @@
 #include <GL/gl.h>
 #include <cmath>
 
+#include "GameEngine/Entity.h"
+
 GameEngine::GameEngine()
 {
     // Constructor
@@ -45,6 +47,10 @@ void GameEngine::Run()
         //                 RGBA
         sprite[idx_pixel] = 0x00FFFFFF;
     }
+    std::string sprite_path = "../rsc/sprites/SpriteTest.png";
+    Entity test_sprite(sprite_path);
+
+    Background background("../rsc/sprites/Background.png");
 
     while (_running)
     {
@@ -62,21 +68,25 @@ void GameEngine::Run()
         {
             _x_circle -= _speed;
             x_sprite -= speed_sprite;
+            test_sprite.IncrementX(-speed_sprite);
         }
         if (keys[SDL_SCANCODE_RIGHT])
         {
             _x_circle += _speed;
             x_sprite += speed_sprite;
+            test_sprite.IncrementX(speed_sprite);
         }
         if (keys[SDL_SCANCODE_UP])
         {
             _y_circle += _speed;
             y_sprite += speed_sprite;
+            test_sprite.IncrementY(speed_sprite);
         }
         if (keys[SDL_SCANCODE_DOWN])
         {
             _y_circle -= _speed;
             y_sprite -= speed_sprite;
+            test_sprite.IncrementY(-speed_sprite);
         }
         if (keys[SDL_SCANCODE_ESCAPE])
         {
@@ -98,7 +108,7 @@ void GameEngine::Run()
         DrawCircle();
         */
         // glRasterPos2f(-1.0f, -1.0f);
-
+        /*
         memcpy(frame, image, _w_height * _w_width * sizeof(int32_t));
 
         for (int i = 0; i < h_sprite; i++)
@@ -112,8 +122,11 @@ void GameEngine::Run()
                 }
             }
         }
+        */
+        background.Clear();
+        background.Draw(test_sprite);
 
-        glDrawPixels(_w_width, _w_height, GL_RGBA, GL_UNSIGNED_BYTE, frame);
+        glDrawPixels(_w_width, _w_height, GL_RGBA, GL_UNSIGNED_BYTE, background.GetFrame());
 
         SDL_GL_SwapWindow(_window);
     }
